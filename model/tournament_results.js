@@ -1,28 +1,22 @@
 const mongoose = require("mongoose");
 
-const tournamentResult = new mongoose.Schema({
+// API
+const Teams = require("./teams.js");
+const Tournament = require("./tournament.js");
+
+const tournamentResultSchema = new mongoose.Schema({
     id: {
-        type: Number,
+        type: String,
         required: true,
         unique: true,
-        validate: {
-            validator: Number.isInteger,
-            message: '{VALUE} is not an integer value'
-        }
     },
-    team_id: {
-        type: Number,
-        required: true,
-        unique: true,
-        validate: {
-            validator: Number.isInteger,
-            message: '{VALUE} is not an integer value'
-        }
+    team_data: {
+        type: Array,
+        default: []
     },
     position: {
         type: Number,
         required: true,
-        unique: true,
         validate: {
             validator: Number.isInteger,
             message: '{VALUE} is not an integer value'
@@ -31,20 +25,14 @@ const tournamentResult = new mongoose.Schema({
     point: {
         type: Number,
         required: true,
-        unique: true,
         validate: {
             validator: Number.isInteger,
             message: '{VALUE} is not an integer value'
         }
     },
-    tournament_id: {
-        type: Number,
-        required: true,
-        unique: true,
-        validate: {
-            validator: Number.isInteger,
-            message: '{VALUE} is not an integer value'
-        }
+    tournament_data: {
+        type: Array,
+        default: []
     },
     created_at: {
         type: String,
@@ -56,4 +44,4 @@ const tournamentResult = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("tournament_result", tournamentResult);
+module.exports = mongoose.model("tournament_result", tournamentResultSchema);

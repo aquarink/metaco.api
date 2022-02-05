@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const teamMembers = new mongoose.Schema({
+const teamMembersSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: true,
@@ -45,4 +45,4 @@ const teamMembers = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("team_members", teamMembers);
+module.exports = mongoose.model("team_members", teamMembersSchema);
