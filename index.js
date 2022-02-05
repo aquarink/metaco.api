@@ -195,7 +195,12 @@ app.get('/leaderboard', (req, res) => {
                     total: {
                         $sum: "$point"
                     }
-                }
+                },
+            },
+            {
+                $sort: { 
+                    "total": -1
+                },
             }
         ],
         function (err, result) {
